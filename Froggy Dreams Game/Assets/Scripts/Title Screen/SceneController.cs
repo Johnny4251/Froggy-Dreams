@@ -40,16 +40,16 @@ public class SceneController : MonoBehaviour
             
         }
 
-        if(bgChanged && instructionText.transform.position.x <= 2500 && hasClicked)
+        if(bgChanged && instructionText.transform.position.x <= 3500 && hasClicked)
         {
             instructionText.transform.Translate(
-                new Vector2(titleTextSpeed * Time.deltaTime, 0));
+                new Vector2(titleTextSpeed * 2 * Time.deltaTime, 0));
         }
 
         if (bgChanged && buttons.transform.position.x <= titleTextMaxX-50 && hasClicked)
         {
             buttons.transform.Translate(
-                new Vector2(titleTextSpeed * Time.deltaTime, 0));
+                new Vector2(titleTextSpeed  * 3.05f * Time.deltaTime, 0));
         }
 
 
