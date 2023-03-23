@@ -12,8 +12,6 @@ public class SceneController : MonoBehaviour
     public GameObject buttons;
 
     public GameObject background;
-    public Texture2D backgroundOne;
-    public Texture2D backgroundTwo;
 
     private bool hasClicked;
     private bool bgChanged; 
@@ -48,14 +46,13 @@ public class SceneController : MonoBehaviour
                 new Vector2(titleTextSpeed * Time.deltaTime, 0));
         }
 
-        if (bgChanged && buttons.transform.position.x <= titleTextMaxX - 100 && hasClicked)
+        if (bgChanged && buttons.transform.position.x <= titleTextMaxX-50 && hasClicked)
         {
             buttons.transform.Translate(
                 new Vector2(titleTextSpeed * Time.deltaTime, 0));
         }
 
 
-        Debug.Log(background.GetComponent<RawImage>().uvRect.x);
         if(background.GetComponent<RawImage>().uvRect.x <= 0 && bgChanged)
         {
             background.GetComponent<RawImage>().uvRect = 
