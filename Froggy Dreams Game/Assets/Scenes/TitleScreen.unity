@@ -1513,7 +1513,7 @@ MonoBehaviour:
   buttons: {fileID: 1793898393}
   background: {fileID: 370194136}
   titleTextSpeed: 150
-  titleTextMaxX: 1150
+  titleTextMaxX: 80
 --- !u!1 &1793898393
 GameObject:
   m_ObjectHideFlags: 0

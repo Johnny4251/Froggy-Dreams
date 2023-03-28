@@ -27,26 +27,28 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(titleText.GetComponent<RectTransform>().localPosition.x);
+
         if(Input.GetMouseButtonDown(0) && !hasClicked)
         {
             hasClicked=true;
             bgChanged = true;
         }
 
-        if (bgChanged && titleText.transform.position.x <= titleTextMaxX && hasClicked)
+        if (bgChanged && titleText.GetComponent<RectTransform>().localPosition.x <= titleTextMaxX && hasClicked)
         {
             titleText.transform.Translate(
                 new Vector2(titleTextSpeed * Time.deltaTime, 0));
             
         }
 
-        if(bgChanged && instructionText.transform.position.x <= 3500 && hasClicked)
+        if(bgChanged && instructionText.GetComponent<RectTransform>().localPosition.x <= 3000 && hasClicked)
         {
             instructionText.transform.Translate(
                 new Vector2(titleTextSpeed * 2 * Time.deltaTime, 0));
         }
 
-        if (bgChanged && buttons.transform.position.x <= titleTextMaxX-50 && hasClicked)
+        if (bgChanged && buttons.transform.localPosition.x <= titleTextMaxX-30 && hasClicked)
         {
             buttons.transform.Translate(
                 new Vector2(titleTextSpeed  * 3.05f * Time.deltaTime, 0));
