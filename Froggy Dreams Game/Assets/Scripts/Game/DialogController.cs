@@ -22,7 +22,8 @@ public class DialogController : MonoBehaviour
 
     [Space(10)]
     public float scrollDelay;
-    
+
+    public GameObject audioClicker;
 
     private int currDialog;
 
@@ -30,6 +31,8 @@ public class DialogController : MonoBehaviour
     {
         changeName("Robert");
         changeDialogText("What-? Why is Everyone Frogs??...", true);
+
+        
     }
 
     void Update()
@@ -37,6 +40,7 @@ public class DialogController : MonoBehaviour
         if(Input.GetMouseButtonDown(0))
         {
             nextDialog();
+            audioClicker.GetComponent<AudioSource>().Play();
         }
     }
 
