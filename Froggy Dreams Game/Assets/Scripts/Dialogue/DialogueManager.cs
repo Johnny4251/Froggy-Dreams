@@ -9,7 +9,7 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject choicesBox;
     public GameObject choicePrefab;
-    public Example example;
+    public HarryDialogueController example;
 
     private int dialogueIndex = 0;
     private List<GameObject> choiceGameObjects = new List<GameObject>();
@@ -71,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         string outcome = choice.outcome;
         if(!string.IsNullOrEmpty(outcome))
         {
-            example.dialogueOptions[0].scene = outcome;
+            example.harryDialogue[0].scene = outcome;
             dialogueIndex = 0;
         }
         EndDialogue();
