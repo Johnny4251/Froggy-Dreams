@@ -8,6 +8,8 @@ public class HarryDialogueController : MonoBehaviour
     public HarryPotter harryDialogue;
     public string currentScene;
 
+    private Dialogue currentDialogue;
+
     private void Start()
     {
         currentScene = SceneManager.GetActiveScene().name;
@@ -20,6 +22,8 @@ public class HarryDialogueController : MonoBehaviour
             harryDialogue.choices.Add(new Choice { text = "Option 3", outcome = "Outcome 3" });
             // add more dialogues and choices for this scene if needed
         }
+
+        SetDialogue(new Dialogue { text = harryDialogue.dialogue[0] });
     }
 
     private void Update()
@@ -49,12 +53,15 @@ public class HarryDialogueController : MonoBehaviour
                         harryDialogue.choices.Insert(harryDialogue.choiceIndex + 1, new Choice { text = "Option 2.1", outcome = "Outcome 2.1" });
                         harryDialogue.choices.Insert(harryDialogue.choiceIndex + 2, new Choice { text = "Option 2.2", outcome = "Outcome 2.2" });
                     }
+
+                    SetDialogue(new Dialogue { text = harryDialogue.dialogue[0] });
                 }
                 else
                 {
                     // show dialogue
-                    Debug.Log(harryDialogue.GetDialogue());
+                    Debug.Log(currentDialogue.text);
                     harryDialogue.NextDialogue();
+                    SetDialogue(new Dialogue { text = harryDialogue.dialogue[0] });
                 }
             }
             else
@@ -64,4 +71,13 @@ public class HarryDialogueController : MonoBehaviour
             }
         }
     }
+
+    private void SetDialogue(Dialogue dialogue)
+{
+    currentDialogue = dialogue;
+    currentDialogue.text = harryDialogue.GetDialogue();
+    GetComponent<DialogueManager>().DisplayDialogue(dialogue);
+}
+
+
 }

@@ -9,7 +9,6 @@ public class HarryPotter : ScriptableObject
     public List<string> dialogue = new List<string>();
     public List<Choice> choices = new List<Choice>();
     public string scene;
-
     public int dialogueIndex;
     public int choiceIndex;
     public bool[] flags = new bool[10];

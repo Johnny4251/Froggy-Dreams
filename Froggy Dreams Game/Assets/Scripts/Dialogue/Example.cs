@@ -49,25 +49,3 @@ public class Example : MonoBehaviour
 
 }
 
-public class Flag {
-    private Dictionary<string, object> flagDict = new Dictionary<string, object>();
-
-    public void SetFlag(string key, object value)
-    {
-        if (flagDict.ContainsKey(key))
-        {
-            flagDict[key] = value;
-        }
-        else
-        {
-            flagDict.Add(key, value);
-        }
-    }
-
-    public object GetFlag(string key)
-    {
-        object value;
-        flagDict.TryGetValue(key, out value);
-        return value;
-    }
-}
