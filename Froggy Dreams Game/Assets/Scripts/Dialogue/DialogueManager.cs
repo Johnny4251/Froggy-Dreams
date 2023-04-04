@@ -71,7 +71,7 @@ public class DialogueManager : MonoBehaviour
         string outcome = choice.outcome;
         if(!string.IsNullOrEmpty(outcome))
         {
-            example.harryDialogue[0].scene = outcome;
+            example.harryDialogue.scene = outcome;
             dialogueIndex = 0;
         }
         EndDialogue();
