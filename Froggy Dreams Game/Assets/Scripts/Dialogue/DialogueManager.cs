@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Resources;
+using static UnityEngine.Resources;
 
 public class DialogueManager : MonoBehaviour
 {

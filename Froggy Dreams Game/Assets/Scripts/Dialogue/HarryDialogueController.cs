@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class HarryDialogueController : MonoBehaviour
 {
@@ -73,11 +74,38 @@ public class HarryDialogueController : MonoBehaviour
     }
 
     private void SetDialogue(Dialogue dialogue)
-{
-    currentDialogue = dialogue;
-    currentDialogue.text = harryDialogue.GetDialogue();
-    GetComponent<DialogueManager>().DisplayDialogue(dialogue);
-}
+    {
+        currentDialogue = dialogue;
+        currentDialogue.text = harryDialogue.GetDialogue();
+        // GetComponent<DialogueManager>().DisplayDialogue(dialogue);
 
 
+        GameObject dialogueBox = GameObject.Find("DialoguePanel");
+        GameObject choiceBox = GameObject.Find("ChoicePanel");
+
+        if (currentDialogue.text != "")
+        {
+            // enable dialogue box and set text
+            dialogueBox.SetActive(true);
+            dialogueBox.transform.Find("DialogueText").GetComponent<Text>().text = currentDialogue.text;
+        }
+        else
+        {
+            // disable dialogue box
+            dialogueBox.SetActive(false);
+        }
+
+        if (harryDialogue.HasChoices())
+        {
+            // enable choice box and set text
+            choiceBox.SetActive(true);
+            Choice currentChoice = harryDialogue.GetChoice(harryDialogue.choiceIndex);
+            choiceBox.transform.Find("ChoiceText").GetComponent<Text>().text = currentChoice.text;
+        }
+        else
+        {
+            // disable choice box
+            choiceBox.SetActive(false);
+        }
+    }
 }
