@@ -108,4 +108,77 @@ public class HarryDialogueController : MonoBehaviour
             choiceBox.SetActive(false);
         }
     }
+
+
+
+
+    
+    // Handling text speed for appearing on screen
+    public float characterDelay = 0.1f;
+
+    private IEnumerator TypeText(string text)
+    {
+        Text dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+        dialogueText.text = ""; 
+
+        foreach (char c in text)
+        {
+            dialogueText.text += c;
+            yield return new WaitForSeconds(characterDelay);
+        }
+    }
+
+
+
+    // Handling max characters for text boxes
+    public int maxCharacters = 50;
+
+    private void DisplayDialogue(string dialogue)
+    {
+        Text dialogueText = GameObject.Find("DialogueText").GetComponent<Text>();
+        dialogueText.text = "";
+
+        if (dialogue.Length <= maxCharacters)
+        {
+            StartCoroutine(TypeText(dialogue));
+        }
+        else
+        {
+            string[] dialogueParts = SplitDialogue(dialogue);
+            StartCoroutine(DisplayDialogueParts(dialogueParts));
+        }
+    }
+
+    private string[] SplitDialogue(string dialogue)
+    {
+        string[] dialogueParts = new string[Mathf.CeilToInt((float)dialogue.Length / maxCharacters)];
+        for (int i = 0; i < dialogueParts.Length; i++)
+        {
+            int startIndex = i * maxCharacters;
+            int length = Mathf.Min(maxCharacters, dialogue.Length - startIndex);
+            dialogueParts[i] = dialogue.Substring(startIndex, length);
+        }
+        return dialogueParts;
+    }
+
+    private IEnumerator DisplayDialogueParts(string[] dialogueParts)
+    {
+        for (int i = 0; i < dialogueParts.Length; i++)
+        {
+            yield return StartCoroutine(TypeText(dialogueParts[i]));
+            if (i < dialogueParts.Length - 1)
+            {
+                // Display "Click to continue" message
+                Text continueText = GameObject.Find("ContinueText").GetComponent<Text>();   // Game Component needs to be added in Unity
+                continueText.enabled = true;
+                while (!Input.GetMouseButtonDown(0))
+                {
+                    yield return null;
+                }
+                continueText.enabled = false;
+            }
+        }
+    }
+
+
 }
