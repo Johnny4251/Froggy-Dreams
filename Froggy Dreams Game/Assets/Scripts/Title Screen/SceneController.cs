@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
 
     public float titleTextSpeed;
     public float titleTextMaxX;
+    public float buttonsMaxX;
 
     void Start()
     {
@@ -27,7 +28,7 @@ public class SceneController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(titleText.GetComponent<RectTransform>().localPosition.x);
+          //Debug.Log(titleText.GetComponent<RectTransform>().localPosition.x);
 
         if(Input.GetMouseButtonDown(0) && !hasClicked)
         {
@@ -48,7 +49,7 @@ public class SceneController : MonoBehaviour
                 new Vector2(titleTextSpeed * 2 * Time.deltaTime, 0));
         }
 
-        if (bgChanged && buttons.transform.localPosition.x <= titleTextMaxX-30 && hasClicked)
+        if (bgChanged && buttons.transform.localPosition.x <= buttonsMaxX && hasClicked)
         {
             buttons.transform.Translate(
                 new Vector2(titleTextSpeed  * 3.05f * Time.deltaTime, 0));
