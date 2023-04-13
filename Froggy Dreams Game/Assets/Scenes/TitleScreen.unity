@@ -1900,7 +1900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &955098972
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2793,6 +2793,7 @@ MonoBehaviour:
   titleText: {fileID: 1523284547}
   instructionText: {fileID: 1210572124}
   logo: {fileID: 955098971}
+  titleLogo: {fileID: 955098971}
   buttons: {fileID: 318337384}
   background: {fileID: 370194136}
   titleTextSpeed: 150

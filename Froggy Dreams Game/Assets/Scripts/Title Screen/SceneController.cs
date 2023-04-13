@@ -10,6 +10,8 @@ public class SceneController : MonoBehaviour
     public GameObject instructionText;
     public GameObject logo;
 
+    public GameObject titleLogo;
+
     public GameObject buttons;
 
     public GameObject background;
@@ -54,6 +56,11 @@ public class SceneController : MonoBehaviour
         {
             buttons.transform.Translate(
                 new Vector2(titleTextSpeed  * 3.05f * Time.deltaTime, 0));
+        }
+
+        if(titleText.GetComponent<RectTransform>().localPosition.x >= titleTextMaxX)
+        {
+            titleLogo.SetActive(true);
         }
 
 
