@@ -8,6 +8,9 @@ public class SceneController : MonoBehaviour
 {
     public GameObject titleText;
     public GameObject instructionText;
+    public GameObject logo;
+
+    public GameObject titleLogo;
 
     public GameObject buttons;
 
@@ -43,16 +46,21 @@ public class SceneController : MonoBehaviour
             
         }
 
-        if(bgChanged && instructionText.GetComponent<RectTransform>().localPosition.x <= 3000 && hasClicked)
+        if(bgChanged && instructionText.GetComponent<RectTransform>().localPosition.y >= -250 && hasClicked)
         {
             instructionText.transform.Translate(
-                new Vector2(titleTextSpeed * 2 * Time.deltaTime, 0));
+                new Vector2(0, -titleTextSpeed * 2 * Time.deltaTime));
         }
 
         if (bgChanged && buttons.transform.localPosition.x <= buttonsMaxX && hasClicked)
         {
             buttons.transform.Translate(
                 new Vector2(titleTextSpeed  * 3.05f * Time.deltaTime, 0));
+        }
+
+        if(titleText.GetComponent<RectTransform>().localPosition.x >= titleTextMaxX)
+        {
+            titleLogo.SetActive(true);
         }
 
 
@@ -62,6 +70,8 @@ public class SceneController : MonoBehaviour
                 new Rect(background.GetComponent<RawImage>().uvRect.x -0.5f
                     * Time.deltaTime, 0,1,1);
         }
+
+        
         
 
     }
