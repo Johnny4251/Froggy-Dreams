@@ -14,6 +14,7 @@ public class ReturnButton : MonoBehaviour
 
     public float onScreenMain;
     public float offScreenSet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,16 +39,13 @@ public class ReturnButton : MonoBehaviour
 
     public void retClicked()
     {
+
         retClick = true;
 
-        //set.RetButton();
+        
     }
 
-    /**
-    public void setClicked()
-    {
-        retClick = false;
-    }
-    */
+    
+    
 
 }
