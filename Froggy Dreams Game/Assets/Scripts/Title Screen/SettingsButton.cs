@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class SettingsButton : MonoBehaviour
 {
-
+    public GameObject settings;
+    /**
     public GameObject settingsButtons;
     public GameObject mainButtons1;
 
@@ -98,4 +101,21 @@ public class SettingsButton : MonoBehaviour
     Debug.Log("Ret");
     }
     
+
+    public void OpenSettings()
+    {
+        SceneManager.LoadSceneAsync("Settings");
+    }
+
+    */
+
+    public void OpenSettings2()
+    {
+        settings.SetActive(true);
+    }
+
+    public void CloseSettings()
+    {
+        settings.SetActive(false);
+    }
 }
